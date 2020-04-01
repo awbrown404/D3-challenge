@@ -126,16 +126,12 @@ function updateToolTip(circlesGroup, chosenXAxis, chosenYAxis) {
 
     circlesGroup.call(toolTip);
 
-
-    circlesGroup
-        // mouseover event - show tooltip
-        .on("mouseover", function (data) {
-            toolTip.show(data);
-        })
-        // onmouseout event - hide tooltip
-        .on("mouseout", function (data, index) {
-            toolTip.hide(data);
-        });
+    // mouseover event - show tooltip
+    circlesGroup.on("mouseenter", function (data) {
+        toolTip.show(data);
+    }).on("mouseleave", function (data, index) {
+        toolTip.hide(data);
+    });
 
     return circlesGroup;
 };
@@ -263,7 +259,7 @@ d3.csv("assets/data/data.csv").then(function (censusData, err) {
                 // replaces chosenXaxis with value
                 chosenXAxis = value;
 
-                // console.log(chosenXAxis)
+                console.log(chosenXAxis)
 
                 // functions here found above csv import
                 // updates x scale for new data
